@@ -15,7 +15,11 @@
     </ul>
   </div>
   <div id='round-display' style='display:none' class="card m-4">
-    <div class="card-header" id="case-title"></div>
+    <div class="card-header">
+      <span id="case-title"></span>
+      <span id="case-label"></span>
+
+    </div>
     <div class = "card-body">
       <h4 class="card-title">Introduction Quote <i class="fa-solid fa-circle-question" data-toggle="tooltip" data-placement="top" title="Read this quote out loud!"></i></h4>
       <p id='intro-text' class="card-text"></p>
@@ -41,6 +45,7 @@
     $('#rules-display').hide()
     const round = RoundsSelection.getRandomRound()
     $('#case-title').text(round.name)
+    $('#case-label').text(`(${round.court}, ${round.year})`)
     $('#intro-text').text(round.intro_quote)
     $('#conclusion-text').text(round.conclusion_quote)
     $('#case-link').attr('href', round.url)
