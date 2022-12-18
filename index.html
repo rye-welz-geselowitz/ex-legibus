@@ -6,14 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-  <h1>Ex Legibus</h1>
+  <h1>⚖️ Ex Legibus ⚖️</h1>
   <button class="btn btn-primary" onclick="populateRound()">Next Prompt</button>
   <button class="btn btn-info" onclick="showRules()">Show Rules</button>
-  <div id='rules-display' style='display:none' class="card m-4">
-    <div class="card-header">Rules</div>
-    <ul class="list-group list-group-flush" id='rules-list'>
-    </ul>
-  </div>
+  <div id='rules-display' style='display:none' class="card m-4"></div>
   <div id='round-display' style='display:none' class="card m-4">
     <div class="card-header">
       <span id="case-title"></span>
@@ -21,9 +17,9 @@
 
     </div>
     <div class = "card-body">
-      <h4 class="card-title">Introduction Quote <i class="fa-solid fa-circle-question" data-toggle="tooltip" data-placement="top" title="Read this quote out loud!"></i></h4>
+      <h4 class="card-title">🗣️ Introduction Quote <i class="fa-solid fa-circle-question" data-toggle="tooltip" data-placement="top" title="Read this quote out loud!"></i></h4>
       <p id='intro-text' class="card-text"></p>
-      <h4 class="card-title">Conclusion Quote <i class="fa-solid fa-circle-question" data-toggle="tooltip" data-placement="top" title="Players compete with this quote for the most plausible conclusion"></i></h4>
+      <h4 class="card-title">🤫 Conclusion Quote <i class="fa-solid fa-circle-question" data-toggle="tooltip" data-placement="top" title="Players compete with this quote for the most plausible conclusion to this court case"></i></h4>
       <p id='conclusion-text' class="card-text"></p>
 
        <a id='case-link' href="#" class="btn btn-info" target="_blank">Source</a>
@@ -37,8 +33,14 @@
 <script src="./rules.js"></script>
 <script>
   function populateRules(){
-    RULES.forEach((rule)=>{
-      $('#rules-list').append(`<li class="list-group-item">${rule}</li>`);
+    RULES.forEach((ruleSet)=>{
+      const header = $(`<div class="card-header rule-set-header">${ruleSet.header}</div>`)
+      const ruleList = $(`<ul class="list-group list-group-flush"></ul>`)
+      ruleSet.items.forEach((item)=>{
+        ruleList.append(`<li class="list-group-item">${item}</li>`);
+      })
+      $('#rules-display').append(header)
+      $('#rules-display').append(ruleList)
     })
   }
   function populateRound(){
