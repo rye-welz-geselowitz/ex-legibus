@@ -1,1 +1,31 @@
-<h1>Testing</h1>
+<html>
+<body>
+  <h1>Ex Legibus</h1>
+  <p>Instructions here</p>
+  <button onclick="populateRound()">Next Prompt</button>
+  <div id='round-display' style='display:none'>
+    <div>
+      <h2>Introduction</h2>
+      <p id='intro-text'>Some text!</p>
+    </div>
+    <div>
+      <h2>Conclusion</h2>
+      <p id='conclusion-text'>Some text</p>
+    </div>
+  </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.2/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/1.0.21/jquery.csv.min.js"></script>
+<script src='./rounds_csv.js'></script>
+<script src="./rounds_selection.js"></script>
+<script>
+  function populateRound(){
+    const round = RoundsSelection.getRandomRound()
+
+    $('#intro-text').text(round.intro_quote)
+    $('#conclusion-text').text(round.conclusion_quote)
+
+    $('#round-display').show()
+  }
+</script>
+</body>
+</html>
